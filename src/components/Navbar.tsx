@@ -4,7 +4,7 @@ import Logo from './Logo';
 import { Menu } from 'lucide-react';
 
 const Navbar = () => {
-  const [isMenuOpen, useState] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const navItems = [
     { title: 'الرئيسية', href: '/', isActive: true },
@@ -41,11 +41,33 @@ const Navbar = () => {
           
           {/* Mobile menu button - on the left side for RTL */}
           <div className="md:hidden">
-            <button className="text-gray-700">
+            <button 
+              className="text-gray-700"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
               <Menu />
             </button>
           </div>
         </div>
+        
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden pt-4">
+            <div className="flex flex-col items-start space-y-2">
+              {navItems.map((item) => (
+                <a 
+                  key={item.title}
+                  href={item.href}
+                  className={`text-gray-700 hover:text-gray-900 px-2 py-1 w-full ${
+                    item.isActive ? 'font-bold' : 'font-normal'
+                  }`}
+                >
+                  {item.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
