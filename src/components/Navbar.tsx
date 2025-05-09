@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from './Logo';
 import { Menu } from 'lucide-react';
 
 const Navbar = () => {
+  const [isMenuOpen, useState] = useState(false);
+  
   const navItems = [
     { title: 'الرئيسية', href: '/', isActive: true },
     { title: 'جلسة إرشادية', href: '#', isActive: false },
@@ -14,18 +16,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white/60 backdrop-blur-md shadow-sm w-full py-4 px-8 rounded-[50px] shadow-lg" dir="rtl">
+    <nav className="bg-white/60 backdrop-blur-md shadow-sm w-full py-4 px-8 rounded-[50px] shadow-lg font-cairo">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button className="text-gray-700">
-              <Menu />
-            </button>
+          {/* Logo - now on the right side for RTL */}
+          <div className="flex-shrink-0">
+            <Logo />
           </div>
           
-          {/* Navigation links - hidden on mobile, visible on desktop */}
-          <div className="hidden md:flex items-center space-x-reverse space-x-6">
+          {/* Navigation links - centered in the navbar */}
+          <div className="hidden md:flex items-center justify-center space-x-reverse space-x-6">
             {navItems.map((item) => (
               <a 
                 key={item.title}
@@ -39,9 +39,11 @@ const Navbar = () => {
             ))}
           </div>
           
-          {/* Logo - always visible, at the left side for RTL */}
-          <div className="flex-shrink-0 ml-auto">
-            <Logo />
+          {/* Mobile menu button - on the left side for RTL */}
+          <div className="md:hidden">
+            <button className="text-gray-700">
+              <Menu />
+            </button>
           </div>
         </div>
       </div>

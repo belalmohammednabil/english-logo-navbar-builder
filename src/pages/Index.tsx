@@ -10,8 +10,8 @@ const Index = () => {
       </div>
       <div className="container mx-auto py-12 px-4">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">مرحباً بكم في Flawless</h1>
-          <p className="text-xl text-gray-600">طريقكم نحو التميز</p>
+          <h1 className="text-4xl font-bold mb-4 font-cairo">مرحباً بكم في Flawless</h1>
+          <p className="text-xl text-gray-600 font-cairo">طريقكم نحو التميز</p>
         </div>
       </div>
     </div>
